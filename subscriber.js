@@ -38,7 +38,11 @@ class Subscriber {
         //Throw away the Topic of your received String by cutting off the first 4 bytes ("rand") 
         //data = data.toString().slice(4);
         //Parse the remaining string and send the object to your WebUi via SocketIO
-        console.log("sending "+topic);
+/*        if (topic ==="acqs") {
+            console.log("sending "+data);
+        }*/
+        
+        console.log("sending " + topic);
         this.connections.map((socket) => socket.emit(topic, data));
         //io.emit(topic, JSON.stringify(data));
         
@@ -51,7 +55,7 @@ class Subscriber {
             self.connections.push(socket);
 
 
-            self.logger.trace(`
+            self.logger.debug(`
                 ------------New connection---------------------
                 
                 Connection ID:   ${socket.id}
@@ -62,7 +66,7 @@ class Subscriber {
 
             socket.on('disconnect', () => {
                 self.connections = self.connections.filter((conn) => conn.id != socket.id);
-                self.logger.trace(`
+                self.logger.debug(`
                     ------------Disconnection---------------------
                     
                     Connection ID:   ${socket.id}
