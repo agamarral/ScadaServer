@@ -1,8 +1,0 @@
-{
-    "publisher": {
-        "endpoint" : "tcp://*:5000"
-    },
-    "subscriber": {
-        "endpoint" : "tcp://*:666"
-    }
-}
