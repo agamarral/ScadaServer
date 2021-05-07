@@ -2,18 +2,22 @@ var zmq = require("zeromq");
 var loglib = require('logger');
 const process = require('process');
 
-config_data = require('./config/config.zmq.json');
+config_data = require('./config/config.json');
 
 
 //ctx = zmq.Context.instance()
 class Publisher {
-    constructor(context, topics) {
+    constructor(context, endpoint, topics) {
 
         this.context = context;
         this.sock = new zmq.Publisher();
+        this.endpoint = endpoint;
 
-        this.logger = loglib.createLogger('publisher.log');
-        this.logger.setLevel('debug');
+        this.logger = loglib.createLogger(config_data.common.logfile);
+        this.logger.setLevel(config_data.common.loglevel);
+        this.logger.format = function(level, date, message) {
+                return date + " - PUBLISHER: " + message;
+        };
 /*        try {
             this.sock.connect(config_data.publisher.endpoint);
             this.logger.debug("socket connected " + config_data.publisher.endpoint);
@@ -27,8 +31,8 @@ class Publisher {
     async init() {
 
         try {
-            await this.sock.bind("tcp://127.0.0.1:5000");
-            this.logger.debug("socket bound " + config_data.publisher.endpoint);
+            await this.sock.bind(this.endpoint);
+            this.logger.debug("socket bound " + this.endpoint.toString());
         } catch (error) {
             this.logger.error(error);
         }
