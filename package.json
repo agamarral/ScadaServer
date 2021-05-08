@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/agamarral/ScadaServer/issues"
   },
-  "homepage": "https://github.com/agamarral/ScadaServer#readme"
+  "homepage": "https://github.com/agamarral/ScadaServer#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "logger": "0.0.1",
+    "node-localstorage": "^2.1.6",
+    "socket.io": "^4.0.2",
+    "socketio": "^1.0.0",
+    "zeromq": "^6.0.0-beta.6"
+  }
 }

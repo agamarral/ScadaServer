@@ -6,7 +6,7 @@
     },
     "eventpublisher": {
         "zmqendpoint" : "tcp://127.0.0.1:5001",
-        "refreshcycle": 500
+        "refreshcycle": 5000
 
     },
     "signalsubscriber": {
