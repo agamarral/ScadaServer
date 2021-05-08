@@ -23,7 +23,7 @@ async function publish_data(publisher) {
     
     eventData = [];
 
-    for (let i = 0; i< 20; i++) {
+    for (let i = 0; i< 200; i++) {
         eventData.push( {
             id: i,
             type: 'DEBUG',
