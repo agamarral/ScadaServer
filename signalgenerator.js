@@ -11,10 +11,10 @@ logger.format = function(level, date, message) {
         return date + " - SIGNALPUB: " + message;
 };
 
-let watchdog = true;
+
 
 async function refresh_watchdog(publisher) {
-
+    let watchdog = true;
     await publisher.send('health', JSON.stringify(watchdog));
 }
 
