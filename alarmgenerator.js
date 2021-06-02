@@ -11,16 +11,14 @@ logger.format = function(level, date, message) {
         return date + " - ALARMPUB: " + message;
 };
 
-let watchdog = false;
+
 
 async function refresh_watchdog(publisher) {
-    watchdog = !watchdog;
+    let watchdog = true;
     await publisher.send('health', JSON.stringify(watchdog));
 }
 
 async function publish_data(publisher) {
-
-    logger.debug("publish_data");
     
     alarmData = [];
 
@@ -28,10 +26,10 @@ async function publish_data(publisher) {
     for (let i = 0; i< 500; i++) {
         alarmData.push( {
             id: i,
-            severity: shuffle([1,2,3])[0],
-            appeared: new Date(1969, 07, 20, 9, 32, 37, 22),
-            disappeared: shuffle([Date.now(), new Date(0)])[0],
-            acknowledged: shuffle([Date.now(), new Date(0)])[0],
+            severity: i % 3 + 1,
+            appeared: Date.now() - 7200, //two hours ago
+            disappeared: i%2 ? Date.now() : 0,
+            acknowledged: i%3 ? Date.now() : 0,
             source: "TempSensor " + i.toString(),
             description: "Temperature exceeds 30º"
         });
@@ -49,7 +47,7 @@ async function run() {
     pub.init().then((result) => {
        
         //setInterval(pub.send.bind(pub), 20000, 'acqs', JSON.stringify(acqData));
-        setInterval(publish_data, config_data.eventpublisher.refreshcycle, pub);
+        setInterval(publish_data, config_data.alarmpublisher.refreshcycle, pub);
         setInterval(refresh_watchdog, config_data.common.healthcycle, pub);
          
     });
