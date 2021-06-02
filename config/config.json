@@ -9,6 +9,11 @@
         "refreshcycle": 5000
 
     },
+    "alarmpublisher": {
+        "zmqendpoint" : "tcp://127.0.0.1:5002",
+        "refreshcycle": 1000
+
+    },
     "signalsubscriber": {
         "ioport" : 4000
     },
