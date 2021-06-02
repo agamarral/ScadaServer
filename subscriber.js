@@ -29,6 +29,7 @@ class Subscriber {
 
         this.topics = topics;
 
+        this.cacheid = cacheid;
         this.cache = new ls.LocalStorage(cacheid);
         this.connections = [];
 
