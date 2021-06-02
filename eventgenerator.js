@@ -17,13 +17,14 @@ async function refresh_watchdog(publisher) {
     await publisher.send('health', JSON.stringify(watchdog));
 }
 
+
 async function publish_data(publisher) {
 
     //logger.debug("publish_data");
     
     eventData = [];
 
-    for (let i = 0; i< 200; i++) {
+    for (let i = 2000; i< 2200; i++) {
         eventData.push( {
             id: i,
             type: 'DEBUG',

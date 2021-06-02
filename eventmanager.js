@@ -17,7 +17,8 @@ async function run() {
     logger.debug("create event subscriber");
     const sub = new eventsub.EventSubscriber(ctx, config_data.eventpublisher.zmqendpoint, 
                                                 ['events', 'health'],
-                                                'undefined', config_data.eventsubscriber.ioport,
+                                                config_data.eventstub.zmqendpoint, 
+                                                config_data.eventsubscriber.ioport,
                                                 "eventCache");
     await sub.init();
 
