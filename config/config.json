@@ -9,29 +9,21 @@
         "refreshcycle": 5000
 
     },
-    "alarmpublisher": {
-        "zmqendpoint" : "tcp://127.0.0.1:5001",
-        "refreshcycle": 5000
-
-    },
     "signalsubscriber": {
         "ioport" : 4000
     },
     "eventsubscriber": {
         "ioport" : 4001
     },
-    "alarmsubscriber": {
-        "ioport" : 4002
-    },
     "cmdstub": {
         "zmqendpoint" : "tcp://127.0.0.1:5005"
     },
-    "alarmstub": {
+    "eventstub" : {
         "zmqendpoint" : "tcp://127.0.0.1:5006"
     },
-    "eventstub": {
+    "alarmstub" : {
         "zmqendpoint" : "tcp://127.0.0.1:5007"
-    },
+    },    
     "common" : {
         "logfile": "signalserver.log",
         "loglevel": "debug",

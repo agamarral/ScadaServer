@@ -10,12 +10,13 @@ logger.format = function(level, date, message) {
         return date + " - EVENTPUB: " + message;
 };
 
-
+let watchdog = false;
 
 async function refresh_watchdog(publisher) {
-    let watchdog = true;
+    watchdog = !watchdog;
     await publisher.send('health', JSON.stringify(watchdog));
 }
+
 
 async function publish_data(publisher) {
 
@@ -23,7 +24,7 @@ async function publish_data(publisher) {
     
     eventData = [];
 
-    for (let i = 0; i< 200; i++) {
+    for (let i = 2000; i< 2200; i++) {
         eventData.push( {
             id: i,
             type: 'DEBUG',
