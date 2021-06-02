@@ -20,6 +20,9 @@
     "eventsubscriber": {
         "ioport" : 4001
     },
+    "alarmsubscriber": {
+        "ioport" : 4002
+    },
     "cmdstub": {
         "zmqendpoint" : "tcp://127.0.0.1:5005"
     },
