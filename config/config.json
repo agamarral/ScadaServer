@@ -26,6 +26,12 @@
     "cmdstub": {
         "zmqendpoint" : "tcp://127.0.0.1:5005"
     },
+    "alarmstub": {
+        "zmqendpoint" : "tcp://127.0.0.1:5006"
+    },
+    "eventstub": {
+        "zmqendpoint" : "tcp://127.0.0.1:5007"
+    },
     "common" : {
         "logfile": "signalserver.log",
         "loglevel": "debug",
