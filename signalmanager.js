@@ -22,13 +22,30 @@ function init_cmds(subscriber) {
             id: 2*i-1,
             signal: 'switch'+i+'_on',
             value: onValue,
-            isValid: validity
+            isValid: validity,
+            type: "bool"
         });
         cmdData.push( {
             id: 2*i,
             signal: 'switch'+i+'_off',
             value: !onValue,
-            isValid: validity
+            isValid: validity,
+            type:"bool"
+        });
+        
+        cmdData.push( {
+            id: 1000 + i,
+            signal: 'analog'+i+'_cmd',
+            value: (Math.random() * 100).toFixed(3),
+            isValid: true,
+            type: "number"
+        });
+        cmdData.push( {
+            id: 2000 + i,
+            signal: 'digital'+i+'_cmd',
+            value: Math.trunc(Math.random() *10000),
+            isValid: true,
+            type:"number"
         });
     }
  

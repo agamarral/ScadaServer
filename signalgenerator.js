@@ -35,7 +35,7 @@ async function publish_data(publisher) {
         acqData.push( {
             id: i+100,
             signal: 'analog'+i+'_meas',
-            value: Math.random()*100,
+            value: (Math.random()*100).toFixed(3),
             isValid: Math.random() < 0.5
         });
         acqData.push( {
