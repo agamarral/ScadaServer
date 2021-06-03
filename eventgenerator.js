@@ -17,26 +17,6 @@ async function refresh_watchdog(publisher) {
     await publisher.send('health', JSON.stringify(watchdog));
 }
 
-
-async function publish_data(publisher) {
-
-    //logger.debug("publish_data");
-    
-    eventData = [];
-
-    for (let i = 2000; i< 2200; i++) {
-        eventData.push( {
-            id: i,
-            type: 'DEBUG',
-            timestamp: Date.now(),
-            source: 'EVENTGENERATOR',
-            description: "this is my event number " + i.toString()
-        });
-    }
-
-    await publisher.send('events', JSON.stringify(eventData));
-}
-
 async function run() {
     const ctx = new zmq.Context();
 
@@ -47,7 +27,6 @@ async function run() {
     pub.init().then((result) => {
        
         setInterval(refresh_watchdog, config_data.common.healthcycle, pub);
-        setInterval(publish_data, config_data.eventpublisher.refreshcycle, pub);
          
     });
 }

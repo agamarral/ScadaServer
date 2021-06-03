@@ -3,7 +3,24 @@ const eventsub = require('./eventsubscriber.js');
 var loglib = require('logger');
 config_data = require('./config/config.json');
 
+function init_events(subscriber) {
 
+    //logger.debug("publish_data");
+    
+    eventData = [];
+
+    for (let i = 2000; i< 2200; i++) {
+        eventData.unshift( {
+            id: i,
+            type: 'DEBUG',
+            timestamp: Date.now(),
+            source: 'EventGenerator',
+            description: "this is my event number " + i.toString()
+        });
+    }
+
+    subscriber.init_events(eventData);
+}
 
 async function run() {
     const ctx = new zmq.Context();

@@ -16,7 +16,9 @@ class EventSubscriber extends Subscriber {
             console.log('Listening on port '+ ioport.toString());
         });
     }
-
+    init_events(events) {
+        this.cache.setItem("events", JSON.stringify(events));
+    }
     manage_connections() {
         var self = this;
 
@@ -69,9 +71,13 @@ class EventSubscriber extends Subscriber {
         socket.on("addEvent", event => {
             self.logger.debug("addEvent received for " + event.description);
             
-            let events = JSON.parse(self.cache.getItem("events")).filter((item) => item.id !== event.id);
+            let events = JSON.parse(self.cache.getItem("events"));
 
-            events.push(event);
+            let next_id = events[0].id + 1;
+
+            event.id = next_id;
+            events.unshift(event);
+
             self.trigger("events", JSON.stringify(events));
 
             self.cache.setItem("events", JSON.stringify(events));
