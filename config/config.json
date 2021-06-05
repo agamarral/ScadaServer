@@ -11,7 +11,7 @@
     },
     "alarmpublisher": {
         "zmqendpoint" : "tcp://127.0.0.1:5002",
-        "refreshcycle": 1000
+        "refreshcycle": 2000
 
     },
     "signalsubscriber": {

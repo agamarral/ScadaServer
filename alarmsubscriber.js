@@ -16,7 +16,9 @@ class AlarmSubscriber extends Subscriber {
             console.log('Listening on port '+ ioport.toString());
         });
     }
-
+    init_alarms(alarms) {
+        this.cache.setItem("alarms", JSON.stringify(alarms));
+    }
     manage_connections() {
         var self = this;
 

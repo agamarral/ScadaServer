@@ -2,14 +2,14 @@ const zmq = require("zeromq");
 var loglib = require('logger');
 config_data = require('./config/config.json');
 
+logger = loglib.createLogger(config_data.common.logfile);
+logger.setLevel(config_data.common.loglevel);
+logger.format = function(level, date, message) {
+    return date + " - ALARMSTUB: " + message;
+};
+
 async function run() {
     const ctx = new zmq.Context();
-
-    logger = loglib.createLogger(config_data.common.logfile);
-    logger.setLevel(config_data.common.loglevel);
-    logger.format = function(level, date, message) {
-        return date + " - ALARMSTUB: " + message;
-    };
 
     logger.debug("create worker");
 
