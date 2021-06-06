@@ -25,7 +25,7 @@ async function publish_data(publisher) {
     acqData = [];
 
 
-    for (let i = 0; i< 20; i++) {
+    for (let i = 0; i< 500; i++) {
         acqData.push( {
             id: i,
             signal: 'lamp'+i+'Status_on',
@@ -33,13 +33,13 @@ async function publish_data(publisher) {
             isValid: Math.random() < 0.5
         });
         acqData.push( {
-            id: i+100,
+            id: i+1000,
             signal: 'analog'+i+'_meas',
-            value: Math.random()*100,
+            value: (Math.random()*100).toFixed(3),
             isValid: Math.random() < 0.5
         });
         acqData.push( {
-            id: i+200,
+            id: i+2000,
             signal: 'digital'+i+'_meas',
             value: Math.trunc(Math.random() *10000),
             isValid: Math.random() < 0.5

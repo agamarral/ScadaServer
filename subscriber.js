@@ -71,7 +71,10 @@ class Subscriber {
         
         for await (const [topic, msg] of this.sock) {
             //this.logger.debug("received a message related to:", topic.toString("utf-8"), "containing message:", msg.toString("utf-8"));
-            this.cache.setItem(topic.toString("utf-8"), msg.toString("utf-8"));
+            if (topic.toString("utf-8") !== "health") {
+                this.cache.setItem(topic.toString("utf-8"), msg.toString("utf-8"));
+            }
+
             this.trigger(topic.toString("utf-8"), msg.toString("utf-8"));
         }
     }

@@ -14,7 +14,7 @@ function init_cmds(subscriber) {
 
     cmdData = [];
 
-    for (let i = 1; i< 21; i++) {
+    for (let i = 1; i< 501; i++) {
         onValue = Math.random() < 0.5;
         validity = true;
         
@@ -22,13 +22,31 @@ function init_cmds(subscriber) {
             id: 2*i-1,
             signal: 'switch'+i+'_on',
             value: onValue,
-            isValid: validity
+            isValid: validity,
+            type: "bool"
         });
         cmdData.push( {
             id: 2*i,
             signal: 'switch'+i+'_off',
             value: !onValue,
-            isValid: validity
+            isValid: validity,
+            type:"bool"
+        });
+        
+        cmdData.push( {
+            id: 3000 + i,
+            signal: 'analog'+i+'_cmd',
+            value: (Math.random() * 100).toFixed(3),
+            isValid: true,
+            type: "number"
+        });
+        cmdData.push( {
+            id: 4000 + i,
+            
+            signal: 'digital'+(i+500)+'_cmd',
+            value: Math.trunc(Math.random() *10000),
+            isValid: true,
+            type:"number"
         });
     }
  
