@@ -33,9 +33,9 @@
         "zmqendpoint" : "tcp://127.0.0.1:5007"
     },    
     "common" : {
-        "logfile": "signalserver.log",
-        "loglevel": "debug",
-        "healthcycle": 50
+        "logfile": "manager.log",
+        "loglevel": "info",
+        "healthcycle": 100
     }
 
 }
