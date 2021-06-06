@@ -14,7 +14,7 @@ function init_cmds(subscriber) {
 
     cmdData = [];
 
-    for (let i = 1; i< 21; i++) {
+    for (let i = 1; i< 501; i++) {
         onValue = Math.random() < 0.5;
         validity = true;
         
@@ -34,15 +34,16 @@ function init_cmds(subscriber) {
         });
         
         cmdData.push( {
-            id: 1000 + i,
+            id: 3000 + i,
             signal: 'analog'+i+'_cmd',
             value: (Math.random() * 100).toFixed(3),
             isValid: true,
             type: "number"
         });
         cmdData.push( {
-            id: 2000 + i,
-            signal: 'digital'+i+'_cmd',
+            id: 4000 + i,
+            
+            signal: 'digital'+(i+500)+'_cmd',
             value: Math.trunc(Math.random() *10000),
             isValid: true,
             type:"number"
