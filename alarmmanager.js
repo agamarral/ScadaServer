@@ -13,7 +13,7 @@ logger.format = function(level, date, message) {
 function init_alarms(subscriber) {
 
     alarmData = [];
-    for (let i = 0; i< 500; i++) {
+    for (let i = 0; i< 100; i++) {
         alarmData.push( {
             id: i,
             severity: i % 3 + 1,
@@ -35,6 +35,7 @@ async function run() {
                                                 config_data.alarmstub.zmqendpoint, 
                                                 config_data.alarmsubscriber.ioport,
                                                 "alarmCache");
+    init_alarms(sub);
     await sub.init();
 
     
