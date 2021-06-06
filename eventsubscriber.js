@@ -72,11 +72,17 @@ class EventSubscriber extends Subscriber {
             self.logger.debug("addEvent received for " + event.description);
             
             let events = JSON.parse(self.cache.getItem("events"));
+            let next_id = 1;
 
-            let next_id = events[0].id + 1;
-
-            event.id = next_id;
-            events.unshift(event);
+            if(events) {
+            
+                next_id = events[0].id + 1;
+                event.id = next_id;
+                events.unshift(event);
+            } else {
+                event.id = next_id;
+                events= [event];
+            }
 
             self.trigger("events", JSON.stringify(events));
 

@@ -37,6 +37,7 @@ async function run() {
                                                 config_data.eventstub.zmqendpoint, 
                                                 config_data.eventsubscriber.ioport,
                                                 "eventCache");
+    init_events(sub);
     await sub.init();
 
     
